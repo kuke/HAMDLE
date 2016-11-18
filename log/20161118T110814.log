@@ -1,0 +1,6 @@
+Data source: ../data/mock_community/
+L = 450
+Min_order = 49, Max_order = 49
+
+Order	 Elapsed_READ	 Elapsed_REF	 Elapsed_ALGO	 VD_HAMDLE	 It
+   49	   11.5846	   14.3633	   63.5756	  0.125284	  314	
