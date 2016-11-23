@@ -7,7 +7,8 @@ G_subseq = (seq=='G');
 C_subseq = (seq=='C');
 T_subseq = (seq=='T');
 
-subplot(411);  stem(pos, A_subseq); axis([-1 1 0 2.0]); ylabel('A');
+subplot(411);  
+stem(pos, A_subseq); axis([-1 1 0 2.0]); ylabel('A');
 set(gca,'FontSize',18);
 hold on
 subplot(412);  stem(pos, G_subseq); axis([-1 1 0 2.0]); ylabel('G');
