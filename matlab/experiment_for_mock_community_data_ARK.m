@@ -129,10 +129,9 @@ fprintf('Elapsed time till convergence: %f\n', elapsedtime_ARK_HAMDLE);
 figure;
 plot(data_ARK_HAMDLE(:,1), data_ARK_HAMDLE(:,3), 'b', 'linewidth', 1.5); xlabel('Number of clusters'); ylabel('VD'); 
 set(gca,'FontSize',15);
-ylim([0 1]);
 frame = getframe(gcf);
 imwrite(frame.cdata, 'VD_vs_Q_result.jpg');
-savefig('VD_vs_Q_result.jpg');
+savefig('VD_vs_Q_result.fig');
 
 %% Showing bar chart
 species = {'A.baumannii', 'A.odontolyticus', 'B.cereus', 'B.vulgatus', 'C.beijerinckii', ...
@@ -142,7 +141,7 @@ species = {'A.baumannii', 'A.odontolyticus', 'B.cereus', 'B.vulgatus', 'C.beijer
         
 [VD_min, index_min]=min(data_ARK_HAMDLE(:,3))
 BarYY = [true_solution; Composition_ARK_HAMDLE(1,:); Composition_ARK_HAMDLE(index_min,:)];
-BarX = 1:21;
+BarX = 1 : NoOfSpecies;
 figure;
 axes1 = axes('Position',[0.0738 0.198 0.894 0.771]);
 box(axes1,'on');
@@ -166,6 +165,6 @@ text(xtextp, ytextp-0.01, xtb, 'HorizontalAlignment', 'right', 'rotation', 45, '
 set(gca,'xticklabel','');
 frame = getframe(gcf);
 imwrite(frame.cdata, 'ARK_HAMDLE_result.jpg');
-savefig('ARK_HAMDLE_result.jpg');
+savefig('ARK_HAMDLE_result.fig');
 
 
