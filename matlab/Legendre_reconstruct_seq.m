@@ -1,4 +1,4 @@
-%% 
+%% Fig 3: run Legendre_reconstruct_seq(READ_seq(1).Sequence(1:450), 100)
 function Legendre_reconstruct_seq(seq, order)
     figure('NumberTitle', 'off', 'Name','Sequence sample')
     plot_sequence(seq);
@@ -19,24 +19,50 @@ function Legendre_reconstruct_seq(seq, order)
     T_subseq = T_coeff*Legendre_mat;
     
     figure('NumberTitle', 'off', 'Name','Sequence reconstructed')
-    subplot(411);  stem(X, A_subseq); axis([-1 1 -0.5 1.5]); ylabel('A');
-    set(gca,'FontSize',18);
-    subplot(412);  stem(X, G_subseq); axis([-1 1 -0.5 1.5]); ylabel('G');
-    set(gca,'FontSize',18);
-    subplot(413);  stem(X, C_subseq); axis([-1 1 -0.5 1.5]); ylabel('C'); 
-    set(gca,'FontSize',18);
-    subplot(414);  stem(X, T_subseq); axis([-1 1 -0.5 1.5]); ylabel('T');
+    subplot(411);  
+    stem(X, A_subseq); axis([-1 1 -0.5 1.5]); ylabel('A');
     set(gca,'FontSize',18);
     
+    subplot(412);  
+    stem(X, G_subseq); axis([-1 1 -0.5 1.5]); ylabel('G');
+    set(gca,'FontSize',18);
+    
+    subplot(413);  
+    stem(X, C_subseq); axis([-1 1 -0.5 1.5]); ylabel('C'); 
+    set(gca,'FontSize',18);
+    
+    subplot(414);  
+    stem(X, T_subseq); axis([-1 1 -0.5 1.5]); ylabel('T');
+    set(gca,'FontSize',18);
+    
+    A_ = (seq=='A');
+    G_ = (seq=='G');
+    C_ = (seq=='C');
+    T_ = (seq=='T');
     figure('NumberTitle', 'off', 'Name','Reconstructed vs. Original')
     plot_sequence(seq);
    
-    subplot(411);  plot(X, A_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('A');
+    subplot(411); 
+    subplot('Position', [0.077 0.79 0.85 0.138]);
+    stem(X, A_); hold on;
+    plot(X, A_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('A(x)');
     set(gca,'FontSize',18);
-    subplot(412);  plot(X, G_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('G');
+    
+    subplot(412);  
+    subplot('Position', [0.077 0.57 0.85 0.138]);
+    stem(X, G_); hold on;
+    plot(X, G_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('G(x)');
     set(gca,'FontSize',18);
-    subplot(413);  plot(X, C_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('C');
+    
+    subplot(413);  
+    subplot('Position', [0.077 0.35 0.85 0.138]);
+    stem(X, C_); hold on;
+    plot(X, C_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('C(x)');
     set(gca,'FontSize',18);
-    subplot(414);  plot(X, T_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('T');
+    
+    subplot(414);  
+    subplot('Position', [0.077 0.11 0.85 0.138]);
+    stem(X, T_); hold on;
+    plot(X, T_subseq,'r','lineWidth',2.0); axis([-1 1 -0.5 1.5]); ylabel('T(x)');
     set(gca,'FontSize',18);
 end
