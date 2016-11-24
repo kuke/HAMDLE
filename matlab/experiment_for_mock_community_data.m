@@ -40,7 +40,7 @@ for order = min_order:max_order
     close all; clc;
     fprintf('current order = %d\n', order);
     % HAMDLE implementation
-    [result_Legendre elapsedtime_READ_Legendre elapsedtime_REF_Legendre elapsedtime_algo_Legendre, it] = Legendre_implementation(order,Legendre_mat(1:order+1,:), READ_seq,REF_seq, NoOfSpecies, seq2species);
+    [result_Legendre elapsedtime_READ_Legendre elapsedtime_REF_Legendre elapsedtime_algo_Legendre, it] = HAMDLE_implementation(order,Legendre_mat(1:order+1,:), READ_seq,REF_seq, NoOfSpecies, seq2species);
 
     VD_HAMDLE = 0.5 * norm((true_solution - result_Legendre), 1);
 
