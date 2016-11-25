@@ -37,6 +37,7 @@ true_solution=true_solution/sum(true_solution);
 
 %% Set parameters
 L = 450;
+Lp = 1;
 X = -1:2/(L-1):1;
 order = 49;
 Legendre_mat = generate_Legendre_matrix(order, X);
@@ -48,7 +49,7 @@ Legendre_mat = generate_Legendre_matrix(order, X);
 % Legendre requires more time to compute system matrix. Hence, if the directory contains system matrix then skip computation (automatically skips this step if necessary .mat files are present).
 
 REF_seq = fastaread([data, 'Reference.fasta']);
-generate_ref_coeff_vector_Legendre(REF_seq, Legendre_mat, order); % saved as kmer_vector_allref_Legendre.mat
+generate_ref_coeff_vector_Legendre(REF_seq, Legendre_mat, order, Lp); % saved as kmer_vector_allref_Legendre.mat
 allref_vector_compile_Legendre('Legendre_coeff_vector_allref.mat', seq2species); % saved as kmer_vector_allref_trans_Legendre.mat
 load('Legendre_coeff_vector_allref_trans_Legendre.mat');
 X = all_species_Legendre_coeff_trans; % X is the system matrix for Legendre
@@ -129,6 +130,7 @@ fprintf('Elapsed time till convergence: %f\n', elapsedtime_ARK_HAMDLE);
 figure;
 plot(data_ARK_HAMDLE(:,1), data_ARK_HAMDLE(:,3), 'b', 'linewidth', 1.5); xlabel('Number of clusters'); ylabel('VD'); 
 set(gca,'FontSize',15);
+xlim([1 MaxNoOfClusters]);
 frame = getframe(gcf);
 imwrite(frame.cdata, 'VD_vs_Q_result.jpg');
 savefig('VD_vs_Q_result.fig');

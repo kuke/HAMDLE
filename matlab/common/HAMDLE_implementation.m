@@ -1,4 +1,4 @@
-function [result_Legendre elapsedtime_READ elapsedtime_REF elapsedtime_algo it] = Legendre_implementation(order,Legendre_mat, READ_seq,REF_seq, NoOfSpecies, seq2species)
+function [result_Legendre elapsedtime_READ elapsedtime_REF elapsedtime_algo it] = Legendre_implementation(order,Legendre_mat, READ_seq,REF_seq, NoOfSpecies, seq2species, Lp)
 
     I=1000; % Maximum allowable iteration in OMP^{+,1}    
     Nu=0.00001; % allowable tolerance in l1 norm computation for OMP^{+,1} 
@@ -12,7 +12,7 @@ function [result_Legendre elapsedtime_READ elapsedtime_REF elapsedtime_algo it] 
  
     tic;
     tstart_REF = tic;
-    generate_ref_coeff_vector_Legendre(REF_seq, Legendre_mat, order);
+    generate_ref_coeff_vector_Legendre(REF_seq, Legendre_mat, order, Lp);
     elapsedtime_REF = toc(tstart_REF);
     fprintf('Elapsed time to generate Legendre coeff vector for reference: elapsedtime_REF = %f\n', elapsedtime_REF);
     
@@ -30,10 +30,11 @@ function [result_Legendre elapsedtime_READ elapsedtime_REF elapsedtime_algo it] 
     fprintf('Iteration times: it = %f\n', it);
 
     result_Legendre = zeros(1,NoOfSpecies);
-
+    fprintf('length of gamma: %d\n', length(gamma));
     for i =1:length(gamma)
         if gamma(i) ~= 0, result_Legendre(fragment2species(i)) = result_Legendre(fragment2species(i)) + gamma(i); end
     end
+    result_Legendre,gamma 
     elapsedtime_algo = toc(tstart_algo);
 
     fprintf('Elapsed time to execute OMP^{+,1} algorithm: elapsedtime_algo = %f\n', elapsedtime_algo); 

@@ -13,6 +13,7 @@ NoOfSpecies = 21;   % Number of species in the reference database
 min_order = 5;     % Minimun order of Legendre expansion
 max_order = 5;     % Maximun order of Legendre expansion
 L = 450;            % Length of sliding window
+Lp = 1;
 
 %% Generate Legendre matrix
 X = -1: 2/(L-1):1;
@@ -40,7 +41,8 @@ for order = min_order:max_order
     close all; clc;
     fprintf('current order = %d\n', order);
     % HAMDLE implementation
-    [result_Legendre elapsedtime_READ_Legendre elapsedtime_REF_Legendre elapsedtime_algo_Legendre, it] = HAMDLE_implementation(order,Legendre_mat(1:order+1,:), READ_seq,REF_seq, NoOfSpecies, seq2species);
+    [result_Legendre elapsedtime_READ_Legendre elapsedtime_REF_Legendre elapsedtime_algo_Legendre, it] = HAMDLE_implementation(order,Legendre_mat(1:order+1,:), ...
+                                               READ_seq,REF_seq, NoOfSpecies, seq2species, Lp);
 
     VD_HAMDLE = 0.5 * norm((true_solution - result_Legendre), 1);
 
