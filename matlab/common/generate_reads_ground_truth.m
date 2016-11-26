@@ -1,5 +1,5 @@
 %%should be called when test dataset is changed
-function generate_reads_ground_truth(READ_seq, REF_seq,rank)
+function generate_reads_ground_truth(READ_seq, REF_seq,rank, data)
 % rank = 'Phylum', 'Class', 'Order', 'Family', 'Genus'
     key_index = 2;
     switch rank
@@ -98,7 +98,7 @@ function generate_reads_ground_truth(READ_seq, REF_seq,rank)
         end
     end
 
- filename = strcat('LargeGroundTruth.mat');
+ filename = strcat([data, 'LargeGroundTruth.mat']);
  save(filename,'rank_map','ref_seqs','seq2species','sol_seqs','sol_species','NoOfSpecies');
 
 end

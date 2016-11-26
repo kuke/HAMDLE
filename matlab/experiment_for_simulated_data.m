@@ -36,9 +36,11 @@ fprintf(fid, 'L = %d, rank = %s, diversity = %d\n', L, rank, 1000);
 fprintf(fid, 'min_order = %d, max_order = %d\n\n', min_order, max_order);
 fprintf(fid, 'Order\t Elapsed_READ\t Elapsed_REF\t Elapsed_algo\t VD_HAMDLE\t It\n');
 
-%generate_reads_ground_truth(READ_seq,REF_seq,rank); //carefully
-% loading ground truth for comparison
-load('LargeGroundTruth.mat');
+if ~exist([data, 'LargeGroundTruth.mat'], 'file')
+    generate_reads_ground_truth(READ_seq,REF_seq,rank, data); 
+end
+% loading ground truth 
+load([data, 'LargeGroundTruth.mat']);
 true_solution=sol_species';  % sol_species comes from Ground Truth (GroundTruth.mat)
 true_solution=true_solution/sum(true_solution);
 disp('some size');
