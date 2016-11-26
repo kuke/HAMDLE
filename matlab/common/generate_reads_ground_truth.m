@@ -98,7 +98,7 @@ function generate_reads_ground_truth(READ_seq, REF_seq,rank, data)
         end
     end
 
- filename = strcat([data, 'LargeGroundTruth.mat']);
+ filename = strcat([data, rank, 'GroundTruth.mat']);
  save(filename,'rank_map','ref_seqs','seq2species','sol_seqs','sol_species','NoOfSpecies');
 
 end
