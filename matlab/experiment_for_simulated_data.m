@@ -15,7 +15,7 @@ REF_seq = fastaread([data, 'trainset7_112011.fa'],'TRIMHEADERS', false);
 %%
 % Varibale definition
 min_order = 5;
-max_order = 5;
+max_order = 80;
 
 L = 400;
 Lp = 100;
@@ -32,7 +32,7 @@ fid = fopen([log_dir,'/',start_time_str,'.log'],'w');
 % rank = Phylum, Class, Order, Family, Genus
 rank = 'Phylum';
 fprintf(fid, 'Data source: %s\n', data);
-fprintf(fid, 'L = %d, rank = %s, diversity = %d\n', L, rank, 1000);
+fprintf(fid, 'L = %d, Lp = %d, rank = %s, diversity = %d\n', L, Lp, rank, 1000);
 fprintf(fid, 'min_order = %d, max_order = %d\n\n', min_order, max_order);
 fprintf(fid, 'Order\t Elapsed_READ\t Elapsed_REF\t Elapsed_algo\t VD_HAMDLE\t It\n');
 
