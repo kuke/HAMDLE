@@ -24,7 +24,7 @@ function [result_Legendre elapsedtime_READ elapsedtime_REF elapsedtime_algo it] 
     load('Legendre_coeff_vector_reads.mat'); load('Legendre_coeff_vector_allref_trans_Legendre.mat'); 
     X = all_species_Legendre_coeff_trans;   
     Mu = mean(Legendre_coeff_vector_reads,1)';
-
+    
     tstart_algo=tic;
     [gamma it]= OMP_plus_1_for_HAMDLE(X,Mu,Nu,I); gamma = gamma / sum(gamma);
     fprintf('Iteration times: it = %f\n', it);
@@ -34,7 +34,7 @@ function [result_Legendre elapsedtime_READ elapsedtime_REF elapsedtime_algo it] 
     for i =1:length(gamma)
         if gamma(i) ~= 0, result_Legendre(fragment2species(i)) = result_Legendre(fragment2species(i)) + gamma(i); end
     end
-    result_Legendre,gamma 
+    
     elapsedtime_algo = toc(tstart_algo);
 
     fprintf('Elapsed time to execute OMP^{+,1} algorithm: elapsedtime_algo = %f\n', elapsedtime_algo); 

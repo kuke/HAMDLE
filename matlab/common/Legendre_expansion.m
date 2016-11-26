@@ -7,7 +7,7 @@ function Legendre_coeff = Legendre_expansion(Legendre_mat, seq, order)
     %Legendre_coeff = zeros(1, 4*(order+1));
     lenSeq = size(seq, 2);
     %pos = -1:2/(lenSeq-1):1;
-
+    seq = upper(seq);
     A_subseq = (seq=='A');
     G_subseq = (seq=='G');
     C_subseq = (seq=='C');
