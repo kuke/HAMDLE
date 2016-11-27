@@ -40,6 +40,6 @@ while ( ((abs(sum(x)-1) > eps)||delta > 1e-5)  && (it < K1) )
     delta = norm(r);
 end
 
-%fprintf('residual = %f\n', norm(r));
+fprintf('it = %d, residual = %f\n', it, norm(r));
 
 

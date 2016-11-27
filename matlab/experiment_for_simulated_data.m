@@ -14,8 +14,8 @@ REF_seq = fastaread([data, 'trainset7_112011.fa'],'TRIMHEADERS', false);
 
 %%
 % Varibale definition
-min_order = 5;
-max_order = 80;
+min_order = 49;
+max_order = 49;
 
 L = 400;
 Lp = 100;

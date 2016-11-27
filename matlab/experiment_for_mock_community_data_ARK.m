@@ -91,6 +91,7 @@ while (ChangeInComposition_ARK_HAMDLE  > eta) && (NoOfClusters_Legendre < MaxNoO
     
     for i=1:NoOfClusters_Legendre
         [tmp, ~]= OMP_plus_1_for_HAMDLE(X,Mu_ARK_HAMDLE(:,i),nu,I);
+        tmp = tmp/sum(tmp);
         tmp_ARK_HAMDLE = zeros(1,NoOfSpecies);
         for j=1:length(tmp)
             if tmp(j) ~=0
