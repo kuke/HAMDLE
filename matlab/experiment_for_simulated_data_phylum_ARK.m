@@ -24,7 +24,7 @@ nu=0.00001; % allowable tolerance in l1 norm computation for OMP^{+,1}
 % Variable for clustering (LBG algorithm based K-means clustering) in ARK algorithm
 eta=0.0005; % User choice: Tolerance till convergence of squared error distance (for all algorithms: Legendre, Quikr and Taxy).
 %MaxNoOfClusters = 32; % Q_{max}    User choice: Maximum allowable number of clusters 
-MaxNoOfClusters = 1;
+MaxNoOfClusters = 10;
 rank = 'Phylum';
 
 %% Loading GroundTruth variable which contains ground truth and reference species identification
@@ -135,6 +135,7 @@ imwrite(frame.cdata, 'VD_vs_Q_simulated_phylum_result.jpg');
 savefig('VD_vs_Q_simulated_phylum_result.jpg.fig');
 
 %% Showing bar chart
+figure
 result_SEK = load([data, 'phylum_result_SEK.txt']);       
 [VD_min, index_min]=min(data_ARK_HAMDLE(:,3));
 fprintf('VD_min = %f, index_min = %d\n', VD_min, index_min);
